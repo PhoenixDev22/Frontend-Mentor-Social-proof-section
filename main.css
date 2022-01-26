@@ -26,22 +26,23 @@ body{
     background-repeat: no-repeat;
     background-position: top left, right bottom;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: center; 
     position: relative;
 }
+/* ----------------start styling the main content------------- */
 main {
-    width: 1110px;
+    max-width: 69.375rem;
     display: flex;
-    align-content: center;
+    align-content: flex-start;
     justify-content: center;
     flex-wrap: wrap;
+    padding-top: 8.2rem;
 }
 main>.testimonial-row{
     flex-basis: 100%;
     min-width: 100%;
 }
+/*---------------- start styling the first .testimonial-row-------------- */
 .testimonial-row:first-child {
     display: flex;
     align-items: center;
@@ -52,9 +53,9 @@ main>.testimonial-row{
     flex-basis: 50%;
     min-width: 300px;
 }
-/*---------------- start styling the main section -------------- */
+/*---------------- start styling the main section in the first .testimonial-row-------------- */
 .main__section {
-    padding: 2rem;
+    padding: 0 2rem;
     animation: transport_main 1s linear;
 }
 @keyframes transport_main {
@@ -65,15 +66,18 @@ main>.testimonial-row{
         transform: translateX(0);
     }   
 }
-.main__section h1{
-    font-size: 50px;
+.main__section .title{
+    font-size: 3rem;
+    line-height: 3rem;
     color: var(--Very-Dark-Magenta);
     font-weight: 700;
+    letter-spacing: -2px;
     margin-bottom: 1.5rem;
 }
-.main__section p{
-    font-size: 15px;
+.main__section .description {
+    font-size: 1rem;
     line-height: 1.5;
+    font-weight: 500;
     color: var(--Dark-Grayish-Magenta);
     padding-right: 3rem;
 }
@@ -99,7 +103,8 @@ main>.testimonial-row{
     border-radius: 5px;
     padding: 1rem 0 1rem 2rem;
     margin: .6rem 0;
-    width: 400px;
+    min-width: 288px;
+    width: 88%;
     display: flex;
     align-items: center;
 }
@@ -116,7 +121,7 @@ main>.testimonial-row{
     padding-left: 1rem;
     color: var(--Very-Dark-Magenta);
 }
-/* start styling the second row testimonial section */
+/* start styling the second .testimonial-row section */
 .testimonial-row:last-child{
     display: flex;
     align-items: center;
@@ -128,7 +133,7 @@ main>.testimonial-row{
     flex-basis: 30%;
     min-width:330px;
     border-radius: .5rem;
-    padding: 27px; 
+    padding: 1.688rem; 
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -158,18 +163,18 @@ main>.testimonial-row{
     height: 40px;
     border-radius: 50%;
 }
-.in__testimonial__section figure h2{
+.in__testimonial__section figure .buyer__title{
     color: var(--White);
     font-size: 13px;
     margin-left: 1.5rem;
 }
-.in__testimonial__section figure h2 span{
+.in__testimonial__section figure .buyer__title span{
     display: block;
     color: var(--Soft-Pink);
     font-weight: 400;
     margin-top: 10px;
 }
-.in__testimonial__section p{
+.in__testimonial__section .sub__description{
     color: var(--White);
     font-size: 14px;
     line-height: 1.5;
@@ -191,27 +196,47 @@ main>.testimonial-row{
 .attribution a {
     color: var(--Soft-Pink);
 }
-@media screen and ( max-width: 1111px){
+.attribution a:focus-visible{
+    outline: 2px dashed var(--Very-Dark-Magenta);
+}
+/* media query for screens less than  */
+@media screen and ( max-width: 69.438rem ){
     main{
         width: 100%;
-        min-height: 100vh;
-        padding: 50px 0; 
     }
-    .main__section h1{
-        font-size: 2.4rem;
+    .testimonial-row:first-child{
+        padding: 0 1rem;
+    }
+    .rate__section li {
+        margin: 0.5rem 0;
+        min-width: 18rem;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.5rem 0
     }
     .testimonial-row:last-child{
         flex-wrap: wrap;
         justify-content:center;
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
     .testimonial-row:last-child .in__testimonial__section{
-        background-color: var(--Very-Dark-Magenta);
-        min-width:288px;
-        margin: 1rem;
+        min-width:18rem;
+        flex-basis: 46%;
+        margin: 1rem ;
+    }
+    .testimonial-row:last-child .in__testimonial__section p{
+        padding-right: 2rem;
     }
 }
-@media screen and ( max-width: 859px){
+/* media query for screens less than  */
+@media screen and ( max-width: 53.688rem){
+    main{
+        padding-top: 5rem;
+    }
+    .testimonial-row:first-child,
+    .testimonial-row:last-child{
+        padding:0;
+    }
     .testimonial-row:first-child{
         flex-wrap: wrap;
     }
@@ -222,25 +247,15 @@ main>.testimonial-row{
     }
     .main__section{
         text-align: center;
-        width: 100%;
-    }
-    .main__section h1{
-        font-size: 27px;
+        padding: 0 6rem 1.5rem 6rem
     }
     .main__section p{
         padding: 0 ;
         font-size: 13px;
     }
     .rate__section{
+        padding-right:0;
         align-items: center;
-        padding-right: 0;
-    }
-    .rate__section li {
-        margin: 1rem 0;
-        width: 288px;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0.5rem 0
     }
     .rate__section li:first-child{
         margin-right:0;
@@ -253,5 +268,27 @@ main>.testimonial-row{
         line-height: 11px;
         padding-left: 0;
         margin-top: .5rem;
+    }
+    .testimonial-row:last-child .in__testimonial__section{
+        flex-basis: auto;
+        width: 88%;
+        min-width: 288px;  
+        margin: 1rem 0;
+    }
+    .testimonial-row:last-child .in__testimonial__section p{
+        padding-right:0;
+    }
+}
+/* media query for screens less than  */
+@media screen and ( max-width:33.75rem){
+    main{
+        padding-top: 4rem;
+    }
+    .main__section{
+        padding:0 3.5rem 1.5rem 3.5rem
+    }
+    .main__section h1{
+        font-size: 2rem;
+        line-height: 2rem; 
     }
 }
